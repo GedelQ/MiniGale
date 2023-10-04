@@ -13,6 +13,7 @@ A estratégia "Mini Gale" foi desenvolvida para ser utilizada no jogo DICE do si
 **Aposta Progressiva:** Após cada derrota, o tamanho da aposta aumenta em 10% da aposta inicial, enquanto após cada vitória, o tamanho da aposta diminui em 9,7% da próxima aposta, alternando dessa forma.
 
 **Meta de Lucro:** O principal objetivo é alcançar um lucro equivalente a 0,0004% da aposta inicial.
+
 **Moeda:** A moeda uasada para esta estratégia é o USDT, devido à sua precisão com 8 casas decimais, permitindo um gerenciamento preciso do saldo.
 
 
