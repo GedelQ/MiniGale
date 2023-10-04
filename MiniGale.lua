@@ -3,24 +3,27 @@
 -- >> Latest update - 02/10/2023
 
 
-betBank             = 1.5000001 -- Saldo inicial (1 USDT) -- Coloque 1/3 da do seu saldo
-percentage          = 0.0003 -- Define a porcentagem basebet de uso da banca (Não mexer)
+betBank             = 1.5000001  -- Saldo inicial  
+percentage          = 0.0003 -- Define a porcentagem basebet de uso da banca
 basebet             = betBank * percentage -- Define a aposta base baseado no percentage
 nextbet             = basebet -- Valor para a próxima aposta
 stopLoss_Percentage = 0.3 -- Pare de apostar quando o saldo for 30% da banca do betBank
 printStats          = 1 -- Imprime estatísticas a cada rodada
 coinvalue           = 5.03 -- Valor da moeda em Real ($$) para 1 USDT
+chance              = 50 -- Chance de ganhar definida como 50%
+baseChance          = 50 -- Chance base de ganhar
+percentageLoss      = 0.10 -- Aumenta a aposta em 10% quando perde
+percentageWin       = 0.097 -- Diminui a aposta em -9.7% quando ganha
 
 
-
-percentage = 0.0004-- Meta de lucro de 1% da banca
-META_Stop_percentage   = 5  -- Divide a meta em partes e reseta seed a cada parte de lucro
-pause_META      = 30 -- Pausa de 30 segundos após bater a meta
-metaProfits     = true -- Em true pausa as apostas por alguns seguindos apos atingir a meta
-metaGoal        = 0 -- Guarda a meta parcial
-metaGoal_acc    = 0 -- Guarda a meta acumulada
-META            = betBank * percentage -- Calcula o valor da meta
-META_Stop       = META / META_Stop_percentage -- Calcula qndo atingiu a meta
+percentage            = 0.0004-- Meta de lucro da banca
+META_Stop_percentage  = 5  -- Divide a meta em partes e reseta seed a cada parte de lucro
+pause_META            = 30 -- Pausa de 30 segundos após bater a meta
+metaProfits           = true -- Em true pausa as apostas por alguns seguindos apos atingir a meta
+metaGoal              = 0 -- Guarda a meta parcial
+metaGoal_acc          = 0 -- Guarda a meta acumulada
+META                  = betBank * percentage -- Calcula o valor da meta
+META_Stop             = META / META_Stop_percentage -- Calcula qndo atingiu a meta
 
 stopLoss = betBank * stopLoss_Percentage
 chance = 50 -- Chance de ganhar definida como 50%
@@ -82,7 +85,7 @@ function dobet()
             end
         end
 
-        nextbet = nextbet - (nextbet * 0.097) -- Diminui a aposta em -9.7% quando ganha
+        nextbet = nextbet - (nextbet * percentageLoss) -- Diminui a aposta em -9.7% quando ganha
 
         
             if (bets % printStats == 0) then
@@ -96,7 +99,7 @@ function dobet()
             highestLossesValue = highestLossesAcc + highestLossesValue
         end
        
-        nextbet = nextbet + (nextbet * 0.10) -- Aumenta a aposta em 10% quando perde
+        nextbet = nextbet + (nextbet * percentageWin) -- Aumenta a aposta em 10% quando perde
 
         -- Verifica o máximo de loss       
     end    
