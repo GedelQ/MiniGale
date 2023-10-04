@@ -1,48 +1,45 @@
 -- >> MiniGale
 -- >> For Dicebot by Gedel Queiroz
--- >> Latest update - 02/10/2023
+-- >> Latest update - 03/10/2023
 
 
-betBank             = 1.5000001  -- Saldo inicial  
-percentage          = 0.0003 -- Define a porcentagem basebet de uso da banca
-basebet             = betBank * percentage -- Define a aposta base baseado no percentage
-nextbet             = basebet -- Valor para a próxima aposta
-stopLoss_Percentage = 0.3 -- Pare de apostar quando o saldo for 30% da banca do betBank
-printStats          = 1 -- Imprime estatísticas a cada rodada
-coinvalue           = 5.03 -- Valor da moeda em Real ($$) para 1 USDT
-chance              = 50 -- Chance de ganhar definida como 50%
-baseChance          = 50 -- Chance base de ganhar
-percentageLoss      = 0.10 -- Aumenta a aposta em 10% quando perde
-percentageWin       = 0.097 -- Diminui a aposta em -9.7% quando ganha
-
-
+banking               = 1.5000001  -- Saldo inicial  
+percentageBank        = 0.0003 -- Define a porcentagem basebet de uso da banca
 percentage            = 0.0004-- Meta de lucro da banca
 META_Stop_percentage  = 5  -- Divide a meta em partes e reseta seed a cada parte de lucro
+stopLoss_Percentage   = 0.3 -- Pare de apostar quando o saldo for 30% da banca do betBank
+chance                = 50 -- Chance de ganhar definida como 50%
+baseChance            = 50 -- Chance base de ganhar
+percentageLoss        = 0.10 -- Aumenta a aposta em 10% quando perde
+percentageWin         = 0.097 -- Diminui a aposta em -9.7% quando ganha
+coinvalue             = 5.03 -- Valor da moeda em Real ($$) para 1 USDT
 pause_META            = 30 -- Pausa de 30 segundos após bater a meta
+
+
+basebet               = banking * percentage -- Define a aposta base baseado no percentage
+nextbet               = basebet -- Valor para a próxima aposta
+printStats            = 1 -- Imprime estatísticas a cada rodada
 metaProfits           = true -- Em true pausa as apostas por alguns seguindos apos atingir a meta
 metaGoal              = 0 -- Guarda a meta parcial
 metaGoal_acc          = 0 -- Guarda a meta acumulada
-META                  = betBank * percentage -- Calcula o valor da meta
+META                  = banking * percentage -- Calcula o valor da meta
 META_Stop             = META / META_Stop_percentage -- Calcula qndo atingiu a meta
 
-stopLoss = betBank * stopLoss_Percentage
-chance = 50 -- Chance de ganhar definida como 50%
-baseChance = 50 -- Chance base de ganhar
-
-betcount           = 0 -- O número total de apostas feitas.
-bet_count          = 0 -- O número de apostas feitas.
-resetseedCount     = 0 -- O número de vezes que a semente foi redefinida.
-highestBet         = 0 -- A aposta mais alta já feita.
-highestLosses      = 0 -- O número máximo de apostas consecutivas perdidas.
-highestLossesAcc   = 0 -- O número máximo acumulado de apostas perdidas.
-highestLossesValue = 0 -- O valor máximo acumulado de perdas.
-highestProfit      = 0 -- O maior lucro já obtido
-metaGoal_Check     = 0 -- Reseta a meta ao atingir a meta
-metaSecurityCheck  = 0 -- Verifica se a soma das partes da meta é igual a meta acumulada
-meta_acc           = 0 -- Guarda o valor d.
-part_meta_acc      = 0 -- O número de partes da meta alcançadas.
-loss_count         = 0 -- O número de apostas consecutivas perdidas.
-win_count          = 0 -- O número de apostas consecutivas ganhas.
+betcount              = 0 -- O número total de apostas feitas.
+bet_count             = 0 -- O número de apostas feitas.
+resetseedCount        = 0 -- O número de vezes que a semente foi redefinida.
+highestBet            = 0 -- A aposta mais alta já feita.
+highestLosses         = 0 -- O número máximo de apostas consecutivas perdidas.
+highestLossesAcc      = 0 -- O número máximo acumulado de apostas perdidas.
+highestLossesValue    = 0 -- O valor máximo acumulado de perdas.
+highestProfit         = 0 -- O maior lucro já obtido
+metaGoal_Check        = 0 -- Reseta a meta ao atingir a meta
+metaSecurityCheck     = 0 -- Verifica se a soma das partes da meta é igual a meta acumulada
+meta_acc              = 0 -- Guarda o valor d.
+part_meta_acc         = 0 -- O número de partes da meta alcançadas.
+loss_count            = 0 -- O número de apostas consecutivas perdidas.
+win_count             = 0 -- O número de apostas consecutivas ganhas.
+stopLoss = banking * stopLoss_Percentage
 
 
 resetseed() -- Reseta a semente antes de iniciiar a partida
@@ -51,11 +48,11 @@ resetstats() -- Reseta o Stats do console antes de iniciar
 function dobet()
     
     
-   if (betBank <= stopLoss) then -- Verifica se atingiu o StopLoss
+   if (bettingBank <= stopLoss) then -- Verifica se atingiu o StopLoss
         stop()
         print("\n\n")
         print("ATINGIMOS O STOP LOSS!")
-   -end
+   end
 
 
     betcount += 1
@@ -79,7 +76,7 @@ function dobet()
         if (metaProfits) then
             if profit >= META_Stop then
                 metaGoal += profit
-                stopLoss = betBank * stopLoss_Percentage
+                stopLoss = bettingBank * stopLoss_Percentage
                 ching()
                 timing()
             end
@@ -118,7 +115,7 @@ function dobet()
         highestProfit = profit
     end
 
-    if betBank <= 0 then stop() 
+    if bettingBank <= 0 then stop() 
     end
 
     notification()
@@ -128,7 +125,7 @@ end
 
 -- Meta Batida
 function metaRestart()
-    META = betBank * percentage
+    META = bettingBank * percentage
     META_Stop = META / META_Stop_percentage
 end
 
