@@ -53,3 +53,40 @@ Esteja ciente de que os resultados podem variar com base na sequência de vitór
 # Pré-requisitos
 - [DiceBot](https://github.com/GamblingWonder/Dicebot/releases/download/4.2.10.11/DiceBot.4.2.10.11.zip)
 - [Script](https://github.com/GedelQ/MiniGale/archive/refs/heads/main.zip)
+- API Stake
+
+# Como Utilizar
+- Baixe o DiceBot e o Script
+- Acesse a sua conta da https://stake.com/pt/settings/api, copie sua api e salve-a em um local seguro
+  
+![image](https://github.com/GedelQ/MiniGale/assets/86412277/e6347521-9498-4bda-bc91-c10706258650)
+  
+- Descompacte os dois arquivos
+- Execute o DiceBot.exe que está na raíz do arquivo descompactado
+- Clique em Site(Stake), escolha a casa de apostas Stake e a moeda USDT
+
+![image](https://github.com/GedelQ/MiniGale/assets/86412277/ce95e443-165a-43a9-b97e-112a31a48733)
+
+- Clique em Settings Mode e escolha a opção "Programmer"
+
+![image](https://github.com/GedelQ/MiniGale/assets/86412277/2a160afa-e1db-4819-8ed8-c264ae03e683)
+
+- Clique em Open e selecione o scrip qeu você decompactou
+
+![image](https://github.com/GedelQ/MiniGale/assets/86412277/60b016d3-6377-43a3-8526-bca5e6ce4004)
+
+- Insira seu Username e API da Stake
+
+![image](https://github.com/GedelQ/MiniGale/assets/86412277/59b6f793-f041-438b-ab7f-d513038b7e24)
+
+- Clique em start e acompanhe as bets no grafico e na stats
+
+![image](https://github.com/GedelQ/MiniGale/assets/86412277/154a7403-fa50-405a-9f0f-a8433c311874)
+
+
+ 
+
+
+  
+  
+
