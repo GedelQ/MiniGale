@@ -21,7 +21,7 @@ A estratégia "Mini Gale" foi desenvolvida para ser utilizada no jogo DICE do si
 A estratégia opera com uma probabilidade fixa de vitória definida em 50%. Como resultado, vitórias e derrotas se alternarão regularmente.
 
 ## Gerenciamento de Risco
-**Stop Loss**: Para mitigar o risco, um limite de perda é definido em 70% do seu saldo inicial, garantindo que você esteja arriscando apenas 30% do seu saldo inicial.
+**Stop Loss**: Para mitigar o risco, um limite de perda é definido em 70% do seu saldo inicial.
 
 ## Opções de Customização
 Se você deseja personalizar esta estratégia ou adaptá-la às suas preferências, as seguintes variáveis podem ser ajustadas:
